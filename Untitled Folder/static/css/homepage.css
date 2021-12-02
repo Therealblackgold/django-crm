@@ -1,0 +1,318 @@
+:root {
+  --primary-color: #e3833e;
+  --secondart-color: #282277;
+  --fonts-color: white;
+  background-color: #ffffff;
+}
+
+.navbar-bg {
+  background-color: var(--secondart-color);
+}
+
+.fonts-white {
+  color: var(--fonts-color) !important;
+}
+
+.primarycolor {
+  background-color: var(--primary-color);
+}
+
+.icon-sizing {
+  font-size: 40px;
+  color: white;
+}
+
+.slogan {
+  height: 400px;
+  width: 100%;
+}
+
+.slogan-image {
+  height: 400px;
+  width: 100%;
+}
+
+.headings {
+  color: #282277;
+}
+
+.table-color {
+  color: lightslategray;
+}
+
+.table-email {
+  font-size: 13px;
+}
+
+.client-button {
+  background-color: var(--secondart-color);
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ececec;
+}
+
+.table-member {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.table-member-icon {
+  font-size: 20px;
+}
+
+/* sidebar */
+
+.text-deco {
+  text-decoration: none;
+}
+
+.sidebar-container {
+  width: 100%;
+  margin-left: 40px;
+}
+
+.package-icon {
+  color: white;
+  font-size: 25px;
+}
+
+.sidebar-img {
+  height: 200px;
+  width: 100%;
+}
+
+.sidebar-box {
+  height: 100px;
+  width: 100%;
+  background-color: var(--secondart-color);
+}
+
+.sidebar-fonts {
+  color: white;
+}
+
+/* upcoming brurials */
+
+.bruials-font-color {
+  color: lightslategray;
+}
+
+.burial-header {
+  background-color: var(--secondart-color);
+  color: white;
+}
+
+.brurial-select {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.img-deco {
+  height: 350px;
+  width: 100%;
+}
+
+@media (max-width: 415px) {
+  .hide-component {
+    display: none;
+  }
+
+  .hide-sidebar {
+    display: none;
+  }
+
+  .bruial-hide {
+    display: none;
+  }
+
+  .remove-img {
+    display: none;
+  }
+}
+
+/* counter css */
+
+:root {
+  --primary-color: #e3833e;
+  --secondart-color: #282277;
+  --fonts-color: white;
+  background-color: #ffffff;
+}
+
+.navbar-bg {
+  background-color: var(--secondart-color);
+}
+
+.fonts-white {
+  color: var(--fonts-color) !important;
+}
+
+.primarycolor {
+  background-color: var(--primary-color);
+}
+
+.icon-sizing {
+  font-size: 40px;
+  color: white;
+}
+
+.slogan {
+  height: 400px;
+  width: 100%;
+}
+
+.slogan-image {
+  height: 400px;
+  width: 100%;
+}
+
+.headings {
+  color: #282277;
+}
+
+.table-color {
+  color: lightslategray;
+}
+
+.table-email {
+  font-size: 13px;
+}
+
+.client-button {
+  background-color: var(--secondart-color);
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ececec;
+}
+
+.table-member {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.table-member-icon {
+  font-size: 20px;
+}
+
+/* sidebar */
+
+.text-deco {
+  text-decoration: none;
+}
+
+.sidebar-container {
+  width: 100%;
+  margin-left: 40px;
+}
+
+.package-icon {
+  color: white;
+  font-size: 25px;
+}
+
+.sidebar-img {
+  height: 200px;
+  width: 100%;
+}
+
+.sidebar-box {
+  height: 100px;
+  width: 100%;
+  background-color: var(--secondart-color);
+}
+
+.sidebar-fonts {
+  color: white;
+}
+
+/* upcoming brurials */
+
+.bruials-font-color {
+  color: lightslategray;
+}
+
+.burial-header {
+  background-color: var(--secondart-color);
+  color: white;
+}
+
+.brurial-select {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.img-deco {
+  height: 350px;
+  width: 100%;
+}
+
+/* counter */
+.count-members {
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.inner-circle {
+  height: 80px;
+  width: 80px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.circle {
+  background-color: #fff;
+  border: 6px solid #282277;
+  height: 100px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width: 100px;
+}
+
+.circle-fonts {
+  color: #282277;
+  font-weight: bold;
+  font-size: large;
+}
+
+.circle-headings {
+  color: #282277;
+}
+
+.underline-text {
+  height: 10px;
+  background-color: orange;
+}
+
+@media (max-width: 415px) {
+  .hide-component {
+    display: none;
+  }
+
+  .hide-sidebar {
+    display: none;
+  }
+
+  .bruial-hide {
+    display: none;
+  }
+
+  .remove-img {
+    display: none;
+  }
+}
+
+.btn-info {
+  background-color: #282277 !important;
+  color: white;
+  border: #282277;
+}

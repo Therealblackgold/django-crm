@@ -1,0 +1,79 @@
+{% extends 'main/main.html' %} {% load static %} {% block content %}
+<style>
+  .form-field a {
+    color: blue;
+  }
+</style>
+<!-- BODY START -->
+<div class="container mt-1">
+  <div class="spouse-card p-3 rounded shadow">
+    <center>
+      <h5 class="spouse-fonts">
+        Pending Form ({{pending.first_name}} {{pending.last_name}})
+      </h5>
+      <p class="text-white">ID Nunmber: {{pending.id_number}}</p>
+    </center>
+  </div>
+
+  <form class="mb-5" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Status:</div>
+        <div class="col-sm">{{form.status}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{form.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Last Name:</div>
+        <div class="col-sm">{{form.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID Number:</div>
+        <div class="col-sm">{{form.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Address:</div>
+        <div class="col-sm">{{form.address}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-one:</div>
+        <div class="col-sm">{{form.phone_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{form.phone_number_2}}</div>
+      </div>
+
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{form.email}}</div>
+      </div>
+      <div class="form-field row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID Copy:</div>
+        <div class="col-sm">{{form.id_copy}}</div>
+      </div>
+
+      <div class="form-field row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Proof Of Address:</div>
+        <div class="col-sm">{{form.proof_of_address}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding"></div>
+        <div class="row p-3 rounded m-2 info-details-bg">
+          <center>
+            <button class="btn btn-primary">Submit</button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <script>
+  var member = "{{user.id}}";
+  document.getElementById("member").value = member;
+</script> -->
+<!-- BODY END -->
+{% endblock %}

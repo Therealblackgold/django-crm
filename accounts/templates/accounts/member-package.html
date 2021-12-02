@@ -1,0 +1,61 @@
+
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- Title -->
+{% block title %} {{request.user}} Package Details {% endblock %}
+<!-- BODY -->
+<title>{{member.first_name}} - Dashboard</title>
+{% block content %}
+
+<!-- BODY -->
+    {% if member.package %}
+    <!-- MEMBER -->
+              <div class="mt-1 my-5">
+                <div class="spouse-card p-3">
+                  <center>
+                    <h5 class="spouse-fonts">
+                      {{member.package}}
+                    </h5>
+                  </center>
+                </div>
+                <div class="member-info shadow-lg rounded p-3">
+                  <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Description:</div>
+                    <div class="col-sm"><p>{{member.package.description|safe }}</p></div>
+                  </div>
+                  <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Cover:</div>
+                    <div class="col-sm"><p>{{member.package.services|safe }}</p></div>
+                  </div>
+                   <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Membership no:</div>
+                    <div class="col-sm">{{member.id_number}}</div>
+                  </div>
+                </div>
+              </div>
+
+    <!-- END HERRE -->
+    {% else %}
+    <center>
+      <img
+        class="christian-funerals-logo"
+        src="{% static 'images/logo-removed.png' %}"
+        alt=""
+      />
+     
+     <div class="alert alert-primary d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+  <div>
+   You have not selcted a package!
+  </div>
+</div>
+<p class="lead">You can wait for our call or contact an office near you to complete your application.</p>
+    </center>
+
+    {% endif %}
+  
+</div>
+
+<!-- BODY END -->
+{% endblock %}

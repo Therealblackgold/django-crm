@@ -1,0 +1,50 @@
+{% load static %}
+
+<!-- css -->
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+<!--  -->
+
+<div class="row d-none d-md-block">
+  <!-- counter -->
+  <div class="col-sm rounded m-2 shadow mt-2 pb-5 pt-3">
+    <div class="row px-5 mt-3">
+      <div class="col-sm m-0 p-0">
+        <div class="m-0 p-0">
+          <div class="circle">
+            <center class="mt-4">
+              <div class="circle-fonts">1</div>
+            </center>
+          </div>
+          <p class="mt-3 circle-headings">Member</p>
+          <div class="underline-text m-2"></div>
+        </div>
+      </div>
+      <div class="col-sm m-0 p-0">
+        <div class="m-0 p-0">
+          <div class="circle">
+            <center class="mt-4">
+              <div class="circle-fonts">
+                <!-- {{membership_no.spouse_set.all|length}} -->
+                {{request.user.spouse.count}}
+              </div>
+            </center>
+          </div>
+          <p class="mt-3 circle-headings">Spouse</p>
+          <div class="underline-text m-2"></div>
+        </div>
+      </div>
+      <div class="col-sm m-0 p-0">
+        <div class="m-0 p-0">
+          <div class="circle">
+            <center class="mt-4">
+              <div class="circle-fonts">{{request.user.family.count}}</div>
+            </center>
+          </div>
+          <p class="mt-3 circle-headings">Family Members</p>
+          <div class="underline-text m-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- counter end -->
+</div>

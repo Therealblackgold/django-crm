@@ -1,0 +1,111 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block content %}
+<!-- Member -->
+<div class="row">
+  <!-- burials start -->
+  <div class="col-sm rounded shadow m-1 p-3">
+    <h6 class="burial-header pt-2 pb-2 px-2 rounded shadow">
+      Upcoming Burials
+    </h6>
+    {% for member in x_member %}
+    <div class="row pt-4">
+      <div class="col bruials-font-color">
+        {{member.first_name}} {{member.last_name}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">
+        {{member.burial_date|date:'Y-M-d H:i'}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">{{member.package}}</div>
+      <div class="col bruials-font-color">{{member.address}}</div>
+      <div class="col">
+        <a
+          href="/admin/accounts/member/{{member.id}}/change/"
+          class="btn btn-info"
+        >
+          Edit
+        </a>
+      </div>
+      <div class="col">
+        <a
+          href="/christian-admin/burials/{{member.slug}}"
+          class="btn btn-secondary"
+        >
+          View
+        </a>
+      </div>
+    </div>
+    <div class="divider mt-2"></div>
+    {% endfor %}
+
+    <!-- Spouse -->
+    {% for member in x_spouse %}
+    <div class="row pt-4">
+      <div class="col bruials-font-color">
+        {{member.first_name}} {{member.last_name}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">
+        {{member.burial_date|date:'Y-M-d H:i'}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">
+        {{member.member.package}}
+      </div>
+      <div class="col bruials-font-color">{{member.address}}</div>
+      <div class="col">
+        <a
+          href="/admin/accounts/spouse/{{member.id}}/change/"
+          class="btn btn-info"
+        >
+          Edit
+        </a>
+      </div>
+      <div class="col">
+        <a
+          href="/christian-admin/burials/{{member.slug}}"
+          class="btn btn-secondary"
+        >
+          View
+        </a>
+      </div>
+    </div>
+    <div class="divider mt-2"></div>
+    {% endfor %}
+
+    <!-- family -->
+    {% for member in x_family %}
+    <div class="row pt-4">
+      <div class="col bruials-font-color">
+        {{member.first_name}} {{member.last_name}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">
+        {{member.burial_date|date:'Y-M-d H:i'}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">
+        {{member.member.package}}
+      </div>
+      <div class="col bruials-font-color">{{member.address}}</div>
+      <div class="col">
+        <a
+          href="/admin/accounts/family/{{member.id}}/change/"
+          class="btn btn-info"
+        >
+          Edit
+        </a>
+      </div>
+      <div class="col">
+        <a
+          href="/christian-admin/burials/{{member.slug}}"
+          class="btn btn-secondary"
+        >
+          View
+        </a>
+      </div>
+    </div>
+    <div class="divider mt-2"></div>
+    {% endfor %}
+    <!-- body end -->
+    {% endblock %}
+  </div>
+</div>

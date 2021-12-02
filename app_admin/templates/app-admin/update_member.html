@@ -1,0 +1,87 @@
+{% extends 'main/main.html' %}
+
+<!-- static files -->
+
+{% load static %}
+
+<!-- BODY START -->
+{% block content %}
+<div class="container mt-1">
+  <div class="spouse-card p-3 rounded shadow">
+    <div class="spouse-card p-3">
+      <center>
+        <h5 class="spouse-fonts">
+          Member Form ( {{member.first_name}} {{member.last_name}}) Membership
+        </h5>
+      </center>
+    </div>
+  </div>
+
+  <form class="mb-5" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Status:</div>
+        <div class="col-sm">{{form.status}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Package:</div>
+        <div class="col-sm">{{form.package}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{form.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Last Name:</div>
+        <div class="col-sm">{{form.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID Number:</div>
+        <div class="col-sm">{{form.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">House Number & Street:</div>
+        <div class="col-sm">{{form.address}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-two:</div>
+        <div class="col-sm">{{form.phone_number}}</div>
+      </div>
+
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{form.phone_number_2}}</div>
+      </div>
+
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{form.email}}</div>
+      </div>
+      <div class="form-field row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{form.id_copy}}</div>
+      </div>
+
+      <div class="form-field row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{form.proof_of_address}}</div>
+      </div>
+
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding"></div>
+        <div class="col-sm">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="background-color: var(--secondart-color)"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- BODY END -->
+{% endblock %}

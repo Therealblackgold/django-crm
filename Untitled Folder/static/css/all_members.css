@@ -1,0 +1,31 @@
+:root {
+  --primary-color: #e3833e;
+  --secondart-color: #282277;
+  --fonts-color: white;
+  background-color: #ffffff;
+}
+
+.bg-color-members {
+  background-color: var(--secondart-color);
+  color: white;
+}
+
+.Member-heading {
+  color: var(--secondart-color);
+  font-size: 27px;
+}
+
+.details-card {
+  background-color: #d3d3d3;
+}
+
+.member-details-jumbo {
+  background-color: var(--secondart-color);
+  color: white;
+}
+
+@media (max-width: 415px) {
+  .hide-package {
+    display: none;
+  }
+}

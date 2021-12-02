@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  {% load static %}
+
+  <style>
+    .a-removed-underline {
+      text-decoration: none;
+    }
+
+    .input-style {
+      background-color: lightgray;
+    }
+
+    .icon-color {
+      color: lightslategray;
+    }
+
+    .input-background {
+      background-color: #d4d4d4;
+    }
+
+    .title-style {
+      color: grey;
+    }
+
+    .forgot-p {
+      color: #282277;
+    }
+
+    .sing-up {
+      color: #e3833e;
+    }
+
+    .account-color {
+      color: grey;
+    }
+
+    .login-container {
+      background-color: white;
+      height: 580px;
+    }
+
+    .Heading {
+      color: #e3833e;
+    }
+
+    .login_btn-jamal {
+      color: white;
+      background-color: #e3833e;
+      height: 50px;
+    }
+
+    .login_btn-sidekicks {
+      color: white;
+      background-color: #282277;
+      height: 50px;
+    }
+
+    .main-background {
+      background-color: #282277;
+    }
+
+    #messages {
+      background-color: #e3833e !important;
+      color: #fff;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 50px;
+    }
+
+    @media screen and (min-width: 767px) {
+      .container-screen {
+        width: 400px;
+      }
+
+      .center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .btn-sizing {
+        width: 200px;
+      }
+    }
+  </style>
+
+  <body class="main-background">
+    <div class="mt-5 center">
+      <!-- msg -->
+      <div>
+        {% for message in messages %}
+        <p class="center" id="messages">{{message}}</p>
+        {% endfor %}
+      </div>
+      <!-- msg end -->
+      <div class="login-container p-4 shadow rounded container-screen m-4">
+        <img src="{% static 'images/logo-removed.png' %}" class="img-fluid" />
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="row input-style p-2 rounded mb-2">
+            <div class="col-1 mt-2">
+              <i class="fas fa-user icon-color"></i>
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username..."
+                class="form-control input-background"
+              />
+            </div>
+          </div>
+
+          <div class="row input-style p-2 rounded mb-2">
+            <div class="col-1 mt-2">
+              <i class="fas fa-key icon-color"></i>
+            </div>
+            <div class="col">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password..."
+                id="myInput"
+                class="form-control input-background"
+              />
+            </div>
+          </div>
+          <input type="checkbox" onclick="myFunction()" />Show Password
+
+          <p class="mt-4 account-color">
+            Don't have an account?
+            <a href="{% url 'register' %}" class="sing-up a-removed-underline"
+              >Sign Up here</a
+            >
+          </p>
+          <p>
+            <a
+              href="{% url 'reset_password' %}"
+              class="forgot-p a-removed-underline"
+              >Forgot your password?</a
+            >
+          </p>
+
+          <div
+            class="
+              d-flex
+              justify-content-center
+              mt-3
+              login_btn-sidekicks
+              btn-sizing
+              rounded-pill
+              center
+            "
+          >
+            <input
+              class="btn login_btn-sidekicks center"
+              type="submit"
+              value="Login"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+</html>

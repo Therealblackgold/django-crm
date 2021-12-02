@@ -1,0 +1,62 @@
+<!-- MAIN TEMPLATE -->
+{% extends 'main.html' %}
+<!-- TITLE -->
+{% block title %}Branc{% endblock %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block content %}
+<section class="w3l-about-breadcrum">
+  <div class="breadcrum-bg py-sm-5 py-4">
+    <div class="container py-lg-3">
+      <h2>Branches</h2>
+      <p><a href="index.html">Home</a> &nbsp; / &nbsp; Branches</p>
+    </div>
+  </div>
+</section>
+<section class="w3l-feature-2">
+  <div class="grid top-bottom py-5">
+    <div class="container py-md-5">
+      <div class="heading text-center mx-auto">
+        <h3 class="head">Our Locations</h3>
+      </div>
+      <div class="middle-section row mt-5 pt-3 text-center">
+        {% for x in locations %}
+        <div
+          class="
+            three-grids-columns
+            col-lg-3 col-sm-6
+            shadow
+            p-3
+            mb-5
+            bg-white
+            rounded
+            m-4
+          "
+        >
+          <span class="fa fa-map-marker button-color"></span>
+          <h4>{{x.branch_name}}</h4>
+          <p>{{x.street}}</p>
+          <p>{{x.town}}</p>
+          {% if x.contact_number_1 %}
+          <p>{{x.contact_person_1}} {{x.contact_number_1}}</p>
+          {% endif %}
+          <!--  -->
+          {% if x.contact_number_2 %}
+          <p>{{x.contact_person_2}} {{x.contact_number_2}}</p>
+          {% endif %}
+          <!--  -->
+          {% if x.contact_number_3 %}
+          <p>{{x.contact_person_3}} {{x.contact_number_3}}</p>
+          {% endif %}
+          <!--  -->
+          {% if x.contact_number_4 %}
+          <p>{{x.contact_person_4}} {{x.contact_number_4}}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+.not-visible {
+  display: none;
+}
+
+/* customize window */
+.modal-content {
+  border-radius: 5%;
+}
+
+/* customzie the backdrop */
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.pointer {
+  cursor: pointer;
+  color: blue;
+}

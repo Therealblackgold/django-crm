@@ -1,0 +1,89 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- Title -->
+{% block title %} {{request.user}}'s Documents {% endblock %}
+<!-- BODY -->
+{% block content %}
+<!-- IF STATEMENT -->
+{% if request.user.id_number %}
+<!-- Documents -->
+
+<div class="mt-1">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">
+        {{member.first_name}} {{member.last_name}} Documents
+      </h5>
+    </center>
+  </div>
+
+  {% if member.id_copy %}
+  <div class="mt-1">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm"><i class="fas fa-file-alt sidebar-icon"></i></div>
+        <div class="col-sm">{{member.id_copy}}</div>
+        <div class="col-sm">
+          <a
+            class="btn btn-secondary"
+            href="{{member.id_copy.url}}"
+            target="_blank"
+            >View</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!--  -->
+  {% if member.proof_of_address %}
+  <div class="mt-1">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm"><i class="fas fa-file-alt sidebar-icon"></i></div>
+        <div class="col-sm">{{member.proof_of_address}}</div>
+        <div class="col-sm">
+          <a class="btn btn-secondary" href="{{file.docfile.url}}">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!-- EXTRA STYLES -->
+<style>
+  .table-image {
+    height: 80px;
+    width: auto;
+  }
+
+  .christian-funerals-logo {
+    height: 150px;
+    width: auto;
+    margin: 10px;
+  }
+  .btn-primary {
+    background-color: #e3833e !important;
+    color: black;
+  }
+</style>
+<!-- If statement else -->
+{% else %}
+<center>
+  <img
+    class="christian-funerals-logo"
+    src="{% static 'images/logo-removed.png' %}"
+    alt=""
+  />
+  <h3>Welcome to Christian Mbonani Funerals</h3>
+  <p>To process your application create a Membership Profile.</p>
+  <a class="btn btn-primary" style="color: white" href="/member/{{x.slug}}"
+    >Create Profile</a
+  >
+</center>
+<!-- If statemnet end -->
+{% endif %}
+<!-- BODY END -->
+{% endblock %}

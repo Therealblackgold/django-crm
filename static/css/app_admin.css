@@ -1,0 +1,126 @@
+:root {
+  --primary-color: #e3833e;
+  --secondart-color: #282277;
+  --fonts-color: white;
+  background-color: #ffffff;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.form-field a {
+  color: blue;
+}
+
+.dropdown-links {
+  text-decoration: none;
+  color: white;
+}
+
+.main-page {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.main-margin-left {
+  margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+  .hide-sidebar {
+    display: none;
+  }
+}
+
+/* sidebar */
+
+.sidebar-box {
+  background-color: var(--secondart-color);
+  color: white;
+  height: 100px;
+}
+
+.sidebar-icon {
+  font-size: 20px;
+}
+
+/* burials */
+
+.burials {
+  background-color: white;
+}
+
+.burial-heading {
+  color: white;
+  background-color: var(--secondart-color);
+}
+
+.table-bg {
+  background-color: #d4d4d4;
+}
+
+.add-burial {
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* todo-list */
+.todo-title {
+  color: var(--primary-color);
+}
+
+.todo-container {
+  background-color: #d4d4d4;
+}
+
+.todo-icon {
+  color: var(--secondart-color);
+  font-size: 18px;
+}
+
+/* up-coming-burials */
+.coming-bg-color {
+  background-color: var(--primary-color);
+}
+
+.upcoming-headings {
+  color: var(--secondart-color);
+  font-size: 18px;
+}
+
+.up-coming-button-color {
+  color: white;
+}
+
+/* todo-list */
+.todo-heading {
+  color: white;
+  background-color: var(--secondart-color);
+}
+
+.todo-label {
+  font-size: 12px;
+  color: lightslategray;
+}
+
+.christian-bg {
+  background-color: #282277;
+  color: white;
+}
+
+li.nav-item.dropdown::marker {
+  color: transparent;
+}
+
+.btn-secondary {
+  background-color: #e3833e;
+  color: #ffffff;
+}

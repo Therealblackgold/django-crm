@@ -1,0 +1,54 @@
+
+
+:root {
+  --primary-color: #e3833e;
+  --secondart-color: #282277;
+  --fonts-color: white;
+  background-color: #ffffff;
+}
+
+
+
+.profile-container{
+    height: 200px;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+
+.profile-info{
+    width: 100%;
+    background-color: white;
+}
+
+.profile-headings{
+    color: white;
+}
+
+.info-details-bg{
+    background-color: #ececec;
+}
+
+.spouse-card{
+    height: 100px;
+    width: 100%;
+    background-color: var(--secondart-color);
+}
+
+.spouse-fonts{
+    color: white;
+}
+
+
+
+
+
+
+@media (max-width: 415px) {
+
+  .sm-padding{
+    padding-bottom: 15px;
+    color: var(--primary-color);
+}
+
+}

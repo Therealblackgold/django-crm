@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <!---<title> Responsive Registration Form | CodingLab </title>--->
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    {{form.errors}}
+    <div class="container">
+      <center>
+        <img
+          src="{% static 'images/logo-removed.png' %}"
+          class="responsive mbonani-image mx-auto"
+        />
+      </center>
+      <div class="content">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="gender-details">
+            <div class="input-box">
+              <span
+                class="details"
+                style="
+                  background-color: #e3833e;
+                  border-radius: 5px;
+                  padding: 4px;
+                "
+                >Please select a package from the drop down.</span
+              >
+              {{form.package}}
+            </div>
+          </div>
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input
+                type="text"
+                placeholder="Enter your first name"
+                name="first_name"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Last Name</span>
+              <input
+                type="text"
+                placeholder="Enter your last name"
+                name="last_name"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input
+                type="text"
+                placeholder="Enter your username"
+                name="username"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">ID Number</span>
+              <input
+                type="number"
+                placeholder="Enter your ID Number"
+                name="id_number"
+                min="13"
+                max="13"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="email" placeholder="Enter your email" name="email" />
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input
+                max="10"
+                min="10"
+                type="text"
+                placeholder="Enter your number"
+                name="phone_number"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number 2</span>
+              <input
+                min="10"
+                max="10"
+                type="number"
+                placeholder="Enter your number"
+                name="phone_number_2"
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Address</span>
+              <input
+                type="text"
+                placeholder="Enter your address"
+                name="address"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input
+                id="myInput"
+                type="password"
+                placeholder="Enter your password"
+                name="password1"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input
+                type="password"
+                placeholder="Confirm your password"
+                name="password2"
+                required
+              />
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="checkbox" onclick="myFunction()" />Show Password
+              </div>
+            </div>
+          </div>
+          <center>
+            <div class="button">
+              <input type="submit" value="Register" />
+            </div>
+
+            <p style="color: grey">
+              Already have an account?
+              <a
+                href="{% url 'login' %}"
+                style="text-decoration: none; color: #e3833e"
+                ><strong>Login</strong></a
+              >
+            </p>
+          </center>
+        </form>
+        <!-- Erros -->
+      </div>
+    </div>
+  </body>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+</html>

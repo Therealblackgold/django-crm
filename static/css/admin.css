@@ -1,0 +1,91 @@
+body {
+  background-color: whitesmoke;
+}
+
+/* SIDEBAR */
+p {
+  color: black;
+}
+
+.sidebar-dark-orange .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-orange .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: whitesmoke;
+  color: #282277;
+}
+
+/* a {
+  color: #398b2e;
+  text-decoration: none;
+  background-color: transparent;
+} */
+
+/* LOGO */
+
+.brand-link .brand-image {
+  float: left;
+  line-height: 0.8;
+  margin-left: 0.8rem;
+  margin-right: 0.5rem;
+  margin-top: -3px;
+  max-height: 80px;
+  width: auto;
+}
+
+/* NAVBAR */
+.navbar-orange.navbar-light .form-control-navbar,
+.navbar-orange.navbar-light
+  .form-control-navbar
+  + .input-group-append
+  > .btn-navbar {
+  background-color: #f8f9fa;
+  border-color: #e16702;
+  color: rgba(52, 58, 64, 0.8);
+}
+/* .navbar-orange {
+  background-color: #e3833e;
+  color: #1f2d3d;
+} */
+
+.accent-primary .btn-link,
+.accent-primary .nav-tabs .nav-link,
+.accent-primary
+  a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn) {
+  color: #b0a63f;
+}
+
+.bg-success {
+  background-color: #282277 !important;
+  color: whitesmoke !important;
+}
+
+.content-header {
+  background-color: #282277;
+  color: whitesmoke;
+  margin-bottom: 20px;
+}
+
+.alert-success {
+  color: #fff;
+  background-color: #282277;
+  border-color: #e3833e;
+}
+
+.btn-outline-success {
+  color: #282277;
+  border-color: #e3833e;
+}
+
+.btn-outline-info {
+  color: #e3833e;
+  border-color: #e3833e;
+}
+
+/* GO admin btn */
+.btn-outline-primary {
+  color: #282277;
+  border-color: #e3833e;
+}
+
+.navbar-orange {
+  background-color: #282277 !important;
+}

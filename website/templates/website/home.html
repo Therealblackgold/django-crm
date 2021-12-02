@@ -1,0 +1,195 @@
+{% extends 'main.html' %}
+<!-- MAIN TEMPLATE -->
+{% block title %}Home{% endblock %}
+<!-- TITLE -->
+{% load static %}
+<!-- STATIC -->
+{% block content %}
+<!-- MAIN SLIDER -->
+{% include 'website/slider.html' %}
+<section class="w3l-grid-8" id="about">
+  <div class="grid-main py-5">
+    <div class="container py-md-3">
+      <div class="heading text-center mx-auto">
+        <h3 class="head">What We Do</h3>
+        <p class="my-3 head">
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+          posuere cubilia Curae; Nulla mollis dapibus nunc, ut rhoncus turpis
+          sodales quis. Integer sit amet mattis quam.
+        </p>
+      </div>
+      <div class="d-grid pb-5 mb-4 pt-5 mt-3">
+        <div class="grid-column1">
+          <div class="card">
+            <a href="services.html"
+              ><img
+                class="card-img-top img-fluid img-responsive"
+                src="{% static 'images/nathi-logo.jpg' %}"
+                alt="image"
+            /></a>
+            <div class="card-grid-column2">
+              <h4>Mbonani Christain Funerals</h4>
+            </div>
+          </div>
+        </div>
+        <div class="grid-column1">
+          <div class="card">
+            <a href="services.html"
+              ><img
+                class="card-img-top img-fluid img-responsive"
+                src="{% static 'images/image-1.jpg' %}"
+                alt="image"
+            /></a>
+            <div class="card-grid-column2">
+              <h4>Our Mission</h4>
+              <p class="mt-2">
+                Mbonani Funerals mission is to encoursge meaning ways for
+                families to lament their misfortune and celebrate the
+                recollection of their adored ones,providing
+                information,direction and coordination with the tall level of
+                Greateness and Solidarity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="w3l-feature-3" id="features">
+  <div class="grid top-bottom">
+    <div class="container">
+      <div class="heading text-center mx-auto">
+        <h3 class="head text-white">Services</h3>
+        <p class="my-3 head text-white"></p>
+      </div>
+      <div class="middle-section grid-column text-center mt-5 pt-3">
+        <div class="three-grids-columns">
+          <h4>Removal and Storage</h4>
+          <p>Coffin as Follows:</p>
+          <h4>Member & Spouse-flat lid foil</h4>
+          <h4>Adoption or Dependants- Flat lid grain</h4>
+          <a href="services.html" class="actionbg read-more-color"
+            >Read More
+          </a>
+        </div>
+        <div class="three-grids-columns">
+          <h4>Hearse</h4>
+          <h4>
+            We offer the foremost lavish & amazingly comfortable transport for
+            the family to go and pay regard to their cherished ones.
+          </h4>
+          <a href="services.html" class="actionbg read-more-color"
+            >Read More
+          </a>
+        </div>
+        <div class="three-grids-columns">
+          <h4>Providing the family with:</h4>
+          <p>CHAIRS</p>
+          <p>TENTS</p>
+          <p>TABLES</p>
+          <p>TOILETS</p>
+          <a href="services.html" class="actionbg read-more-color"
+            >Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--customers-7-->
+<section class="w3l-customers-8" id="testimonials">
+  <div class="customers_sur py-5">
+    <div class="container py-md-3">
+      <div class="heading text-center mx-auto">
+        <h3 class="head">Happy Clients</h3>
+        <p class="my-3 head">Always Strive to give our Best.</p>
+      </div>
+      <div class="customers-top_sur row mt-5 pt-3">
+        <div class="customers-left_sur col-md-6">
+          <div class="customers_grid">
+            <span class="fa fa-quote-left mb-5"></span>
+            <p class="sub-test">
+              If you lose someone you love, I would recommend Mbonani Christain
+              Funerals.They were amazing. I was stricken by shock and grief and
+              they just loved me and cared for me.
+            </p>
+            <div class="customers-bottom_sur row">
+              <div class="custo-img-res col-3">
+                <img
+                  src="{% static 'images/newperson.jpg' %}"
+                  alt=" "
+                  class="img-responsive"
+                />
+              </div>
+              <div class="custo_grid col-9">
+                <span class="read-more-color">Client</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="customers-middle_sur col-md-6 mt-md-0 mt-4">
+          <div class="customers_grid">
+            <span class="fa fa-quote-left mb-5"></span>
+            <p class="sub-test">
+              They help you through the entire process of loss, mourning and
+              most important… celebrating your loved ones life with the dignity
+              that they deserve!
+            </p>
+            <div class="customers-bottom_sur row">
+              <div class="custo-img-res col-3">
+                <img
+                  src="{% static 'images/newperson.jpg' %}"
+                  alt=" "
+                  class="img-responsive"
+                />
+              </div>
+              <div class="custo_grid col-9 b">
+                <span class="read-more-color">Client</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--//customers-7-->
+<section class="form-12" id="home">
+  <div class="form-12-content">
+    <div class="container">
+      <div class="grid-column-2">
+        <div class="column2 text-center">
+          <div class="heading text-center mx-auto">
+            <h3 class="head text-white">
+              Looking forward to you joining our family.
+            </h3>
+          </div>
+          <a
+            class="btn btn-secondary btn-theme2 mt-5 button-color"
+            href="contact.html"
+          >
+            Contact Us</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+{% endblock %}
+
+<!-- #E3833E -->
+
+<!-- <h1 class="p-4">2020 Special - Package A & B valid till December 31st</h1>
+  <section class="w3l-feature-3" id="features">
+    <div class="grid top-bottom">
+      <div class="container">
+        <div class="heading text-center mx-auto">
+          <h4 class="head text-white pb-4">Offer valid for Gauteng Branches ONLY.</h4>
+          <h4 class="head text-white">We only cover within 50km radius.</h4>
+        </div>
+      </div>
+    </div>
+  </section> -->

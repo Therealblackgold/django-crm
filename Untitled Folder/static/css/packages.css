@@ -1,0 +1,395 @@
+/*--
+    Author: W3layouts
+    Author URL: http://w3layouts.com
+--*/
+
+/*-- colors --*/
+:root {
+    --primary-color:  #E3833E !important;
+    --font-color: rgba(22, 28, 45, 0.7);
+    --bg-color: #fff;
+    --heading-color: #3b3663;
+    --border-radius: 7px;
+    --transport-color : #192175:
+}
+/*-- //colors --*/
+
+/* reset code */
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    color: #585858;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+/*  wrapper */
+.wrapper {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .wrapper {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .wrapper {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        max-width: 1140px;
+    }
+}
+
+/*  /wrapper */
+
+.d-grid {
+    display: grid;
+}
+
+button,
+input,
+select {
+    -webkit-appearance: none;
+    outline: none;
+}
+
+button,
+.btn,
+select {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+p{
+
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--font-color);
+    opacity: .8;
+}
+body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+form,
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.text-center{
+    text-align: center;
+}
+
+/*-- pricing styling--*/
+.w3l-pricingplans {
+    padding: 10px 10px;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.w3l-pricingplans-1 {
+    justify-content: center;
+    display: grid;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--heading-color);
+}
+
+.w3l-packages {
+    max-width: 1000px;
+    margin: 40px auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.package {
+    width: 350px;
+    margin: 0 10px;
+    box-sizing: border-box;
+    border: 3px solid #e8e8e8;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    display: inline-block;
+    padding: 40px 25px;
+    text-align: center;
+    -webkit-transition: .5s linear;
+    transition: .5s linear;
+    position: relative;
+}
+
+.package:hover {
+    -webkit-transition: .3s linear;
+    transition: .3s linear;
+    transform: translateY(-20px);
+}
+
+.name {
+    color: var(--heading-color);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.price {
+    margin-top: 7px;
+    margin-bottom: 10px;
+    color: var(--font-color);
+}
+
+hr {
+    background-color: #dedede;
+    border: none;
+    height: 1px;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 50px;
+}
+
+li {
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: var(--font-color);
+    opacity: .85;
+}
+
+li:before {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-right: 3px;
+}
+
+
+
+
+.checkIcon,
+li.package-list:before {
+    font-family: "FontAwesome";
+    content: "\f105";
+}
+.brilliant::after {
+    font-family: "FontAwesome";
+    content: "\f006";
+}
+
+.brilliant {
+    border-color: var(--primary-color);
+}
+
+.brilliant::before {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 64px 64px 0 0;
+    border-color: var(--primary-color) transparent transparent transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+}
+
+.brilliant::after {
+    color: white;
+    position: absolute;
+    left: 9px;
+    top: 9px;
+    text-shadow: 0 0 2px var(--primary-color);
+    font-size: 1.2rem;
+}
+button.get {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    margin-top: 10px;
+    color: var(--primary-color);
+    background: rgba(170, 170, 170, 0.1);
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+}
+button.get:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+.brilliant button.get {
+    background: var(--primary-color);
+    color: #fff;
+}
+/*-- copyright --*/
+.copy-right {
+    padding: 0 10px;
+}
+.copy-right p a{
+    color: var(--heading-color);
+}
+.copy-right p a:hover{
+    color: var(--primary-color);
+}
+/*-- //copyright --*/
+
+
+/*-- responsive design starts --*/
+@media (max-width: 991px){
+    .w3l-packages {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1073px){
+    .hide-card{
+        display: none;
+    }
+}
+@media (max-width: 736px){
+    .w3l-packages {
+        display: flex;
+        flex-direction: column;
+    }
+    .package.brilliant{
+        margin: 20px 0;
+    }
+     .hide-card{
+        display: none;
+    }
+    
+}
+
+@media (min-width: 736px){
+     .hide-laptop-section{
+        display: none;
+    }
+
+    .hide-card{
+        display: none;
+    }
+    
+}
+
+@media (min-width: 1024px){
+     .hide-laptop-section{
+        display: block;
+    }
+    
+}
+@media (max-width: 480px){
+    h1 {
+        font-size: 35px;
+    }
+    .w3l-packages {
+        margin: 25px auto;
+    }
+
+        .hide-height{
+        display: none;
+    }
+
+    .hide-card{
+        display: block;
+    }
+    .hide-laptop-section{
+        display: none;
+    }
+}
+@media (max-width: 384px){
+    .package {
+        width: 100%;
+    }
+    .w3l-pricingplans {
+        padding: 30px 0px;
+    }
+    .name {
+        font-size: 25px;
+    }
+
+        .hide-height{
+        display: none;
+    }
+}
+
+@media (max-width: 375px){
+    h1 {
+        font-size: 30px;
+    }
+    .copy-right p {
+        font-size: 17px;
+    }
+        .hide-height{
+        display: none;
+    }
+
+    .hide-card{
+        display: block;
+    }
+
+    .hide-laptop-section{
+        display: none;
+    }
+}
+
+.tranport-blue{
+    background-color: #182075 !important;
+}
+
+.package-color{
+    color: #182075 !important;
+}
+/*-- //responsive design starts --*/
+
+/*-- //plans styling--*/

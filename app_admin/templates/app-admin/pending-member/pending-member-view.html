@@ -1,0 +1,163 @@
+{# extends 'christian_admin/main.html' #}
+
+<!-- Main template -->
+{% extends 'main/main.html' %}
+
+<!-- Static Files -->
+{% load static %}
+
+<style>
+  /* sidebar */
+
+  .text-deco {
+    text-decoration: none;
+  }
+
+  .sidebar-container {
+    width: 100%;
+    margin-left: 40px;
+  }
+
+  .package-icon {
+    color: white;
+    font-size: 25px;
+  }
+
+  .sidebar-img {
+    height: 200px;
+    width: 100%;
+  }
+
+  .sidebar-box {
+    height: 100px;
+    width: 100%;
+    background-color: var(--secondart-color);
+  }
+
+  .sidebar-fonts {
+    color: white;
+  }
+</style>
+
+{% block content %}
+
+<!-- BODY -->
+<div class="col">
+  <!-- MEMBERSHIP JUMBOTRON -->
+  <div class="mt-1">
+    <div class="profile-container p-3 rounded shadow">
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>ID No :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.user.identification}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Package :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.package}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Status :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.status}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Received by :</strong></h6>
+        </div>
+        <div class="col"><strong>Jamal toshiba</strong></div>
+      </div>
+      <div class="row profile">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Date Issued :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.created}}</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENDING MEMBER TABLE -->
+  <div class="spouse-card p-3 mt-4">
+    <center>
+      <h5 class="spouse-fonts">
+        Pending Form ({{pending.first_name}} {{pending.last_name}})
+      </h5>
+      <p class="text-white">ID Nunmber: {{pending.id_number}}</p>
+    </center>
+  </div>
+  <div class="profile-info shadow-lg rounded p-3 mb-5">
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Status:</div>
+      <div class="col-sm">{{pending.status}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Frist Name:</div>
+      <div class="col-sm">{{pending.first_name}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Last Name:</div>
+      <div class="col-sm">{{pending.last_name}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">ID number:</div>
+      <div class="col-sm">{{pending.id_number}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Physical Address:</div>
+      <div class="col-sm">{{pending.address}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Contact:</div>
+      <div class="col-sm">{{pending.phone_number}}</div>
+    </div>
+    {% if pending.phone_number_2 %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Contact:</div>
+      <div class="col-sm">{{pending.phone_number_2}}</div>
+    </div>
+    {% endif %}
+    <!--  -->
+    {% if pending.email %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Email:</div>
+      <div class="col-sm">{{pending.email}}</div>
+    </div>
+    {% endif %} {% if pending.id_copy %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">ID Copy:</div>
+      <div class="col-sm">
+        <a class="text-primary" href="{{pending.id_copy.url}}" target="_blank"
+          >{{pending.id_copy}}</a
+        >
+      </div>
+    </div>
+    {% endif %} {% if pending.proof_of_address %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Proof Of Address:</div>
+      <div class="col-sm">
+        <a
+          class="text-primary"
+          href="{{pending.proof_of_address.url}}"
+          target="_blank"
+          >{{pending.proof_of_address}}</a
+        >
+      </div>
+    </div>
+    {% endif %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding"></div>
+      <center>
+        <a
+          href="{% url 'update_pending_member' slug_id=pending.slug %}"
+          class="btn btn-primary"
+          style="background-color: var(--secondart-color); margin-right: 30px"
+          ><i class="fas fa-edit" style="margin-right: 6px"></i>Edit</a
+        >
+      </center>
+    </div>
+  </div>
+</div>
+{% endblock %}

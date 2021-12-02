@@ -1,0 +1,33 @@
+
+:root {
+  --primary-color: #e3833e;
+  --secondart-color: #282277;
+  --fonts-color: white;
+  background-color: #ffffff;
+}
+
+.bg-package{
+    background-color: var(--secondart-color);
+    color: white;
+}
+
+.btn-package{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.heading-color{
+    color: var(--primary-color);
+}
+
+.package-header{
+    font-weight: 400;
+}
+
+.package-buttons{
+    width: 80px;
+}
+
+.forms-headings{
+    color: var(--primary-color);
+}

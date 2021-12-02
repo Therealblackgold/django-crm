@@ -1,0 +1,99 @@
+   <!-- MAIN TEMPLATE -->
+ {% extends 'main.html' %}
+<!-- TITLE -->
+{% block title %}Gallery{% endblock %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+  {% block content %}
+  
+  <section class="w3l-service-breadcrum">
+      <div class="breadcrum-bg py-sm-5 py-4">
+        <div class="container py-lg-3">
+          <h2>Our Gallary</h2>
+          <p><a href="index.html">Home</a> &nbsp; / &nbsp; Gallary</p>
+        </div>
+      </div>
+    </section>
+    <section class="w3l-features-8">
+      <!-- /features -->
+      <div class="features py-5" id="services">
+        <div class="container py-md-3">
+          <div class="fea-gd-vv text-center row">
+            <div class="float-top col-lg-4 col-md-6">
+              <a href="#"
+                ><img
+                  src="{% static 'images/bg-2.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 mt-md-0 mt-5">
+              <a href="#"
+                ><img
+                  src="{% static 'images/image-5.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 mt-lg-0 mt-5">
+              <a href="#"
+                ><img
+                  src="{% static 'images/image-6.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 pt-4">
+              <a href="#"
+                ><img
+                  src="{% static 'images/image-7.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 pt-4">
+              <a href="#"
+                ><img
+                  src="{% static 'images/image-4.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 pt-4">
+              <a href="#"
+                ><img
+                  src="{% static 'images/bg-4.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 pt-4">
+              <a href="#"
+                ><img
+                  src="{% static 'images/image-8.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 pt-4">
+              <a href="#"
+                ><img
+                  src="{% static 'images/bg-1.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+            <div class="float-top col-lg-4 col-md-6 pt-4">
+              <a href="#"
+                ><img
+                  src="{% static 'images/image-9.jpg' %}"
+                  class="img-responsive"
+                  alt=""
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- //features -->
+      {% endblock %}

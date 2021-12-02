@@ -1,0 +1,264 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- Title -->
+{% block title %} {{request.user}} Members Details {% endblock %}
+<!-- BODY -->
+{% block content %}
+<!-- Member counter -->
+{% include 'accounts/counter.html' %}
+<!-- Member counter end -->
+
+<!-- IF STATEMENT -->
+{% if request.user.id_number %}
+<!-- MEMBERSHIP DETAILS -->
+
+<div class="mt-1">
+  <div class="profile-container p-3 rounded shadow">
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings">Membership No :</h6>
+      </div>
+      <div class="col">{{display.id_number}}</div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings">Package :</h6>
+      </div>
+      <div class="col">{{display.package}}</div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings">Status :</h6>
+      </div>
+      <div class="col">{{display.status}}</div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings">Received by :</h6>
+      </div>
+      <div class="col">{{display.recieved_by}}</div>
+    </div>
+    <div class="row profile">
+      <div class="col">
+        <h6 class="profile-headings">Date Issued :</h6>
+      </div>
+      <div class="col">{{display.created}}</div>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBER -->
+
+<div class="my-4">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">
+        Member ({{display.first_name}} {{display.last_name}})
+      </h5>
+      <p class="text-white">Membership Number - {{display.id_number}}</p>
+    </center>
+  </div>
+  <div class="mt-1">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{display.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Second Name:</div>
+        <div class="col-sm">{{display.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID number:</div>
+        <div class="col-sm">{{display.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Physical Address:</div>
+        <div class="col-sm">{{display.address}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{display.phone_number}}</div>
+      </div>
+      <!-- phone number if statement -->
+      {% if display.phone_number_2 %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{display.phone_number_2}}</div>
+      </div>
+      {% endif %}
+      <!-- email if statement -->
+      {% if display.email %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{display.email}}</div>
+      </div>
+      {% endif %} {% if display.id_copy %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID copy:</div>
+        <div class="col-sm">
+          <a
+            style="color: #e3833e; text-decoration: underline"
+            href="{{display.id_copy.url}}"
+            target="_blank"
+            >{{display.first_name}}-id-copy</a
+          >
+        </div>
+      </div>
+      {% endif %}
+      <!--  -->
+      {% if display.proof_of_address %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Proof of address:</div>
+        <div class="col-sm">
+          <a
+            style="color: #e3833e; text-decoration: underline"
+            href="{{display.proof_of_address.url}}"
+            target="_blank"
+            >{{display.first_name}}-proof-of-address</a
+          >
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- SPOUSE -->
+{% for spouse in display.spouse.all %}
+<div class="my-4">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">
+        Spouse ({{spouse.first_name}} {{spouse.last_name}})
+      </h5>
+      <p class="text-white">Membership Number - {{display.id_number}}</p>
+    </center>
+  </div>
+  <div class="mt-1">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{spouse.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Second Name:</div>
+        <div class="col-sm">{{spouse.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID number:</div>
+        <div class="col-sm">{{spouse.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Physical Address:</div>
+        <div class="col-sm">{{spouse.address}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{spouse.phone_number}}</div>
+      </div>
+      <!-- phone number if statement -->
+      {% if spouse.phone_number_2 %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{spouse.phone_number_2}}</div>
+      </div>
+      {% endif %}
+      <!-- email if statement -->
+      {% if spouse.email %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{spouse.email}}</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- FAMILY -->
+{% for family in display.family.all %}
+<div class="spouse-card p-3">
+  <center>
+    <h5 class="spouse-fonts">
+      Family Members ({{family.first_name}} {{family.last_name}})
+    </h5>
+    <p class="text-white">Membership Number - {{display.id_number}}</p>
+  </center>
+</div>
+<div class="mt-1">
+  <div class="profile-info shadow-lg rounded p-3">
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Frist Name:</div>
+      <div class="col-sm">{{family.first_name}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Last Name:</div>
+      <div class="col-sm">{{family.last_name}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">ID number:</div>
+      <div class="col-sm">{{family.id_number}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Physical Address:</div>
+      <div class="col-sm">{{family.address}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Contact:</div>
+      <div class="col-sm">{{family.phone_number}}</div>
+    </div>
+    {% if family.phone_number_2 %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Contact:</div>
+      <div class="col-sm">{{family.phone_number_2}}</div>
+    </div>
+    {% endif %}
+    <!--  -->
+    {% if family.email %}
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Email:</div>
+      <div class="col-sm">{{family.email}}</div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+<!-- FAMILY TABLE END -->
+
+<!-- EXTRA STYLES -->
+<style>
+  .table-image {
+    height: 80px;
+    width: auto;
+  }
+
+  .christian-funerals-logo {
+    height: 150px;
+    width: auto;
+    margin: 10px;
+  }
+  .btn-primary {
+    background-color: #e3833e !important;
+    color: black;
+  }
+</style>
+<!-- If statement else -->
+{% else %}
+<center>
+  <img
+    class="christian-funerals-logo"
+    src="{% static 'images/logo-removed.png' %}"
+    alt=""
+  />
+  <h3>Welcome to Christian Mbonani Funerals</h3>
+  <p>To process your application create a Membership Profile.</p>
+  <a class="btn btn-primary" style="color: white" href="/member/{{x.slug}}"
+    >Create Profile</a
+  >
+</center>
+<!-- If statemnet end -->
+{% endif %}
+<!-- BODY END -->
+{% endblock %}

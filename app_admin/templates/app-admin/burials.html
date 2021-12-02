@@ -1,0 +1,344 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block content %}
+<!-- Member -->
+<!-- if statement -->
+{# if display.user.member.status == 'deceased' #}
+<!--  -->
+{% for display in display %}
+
+<!-- MEMBERSHIP JUMBOTRON -->
+<div class="mt-1">
+  <div class="profile-container p-3 rounded shadow">
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Membership No :</strong></h6>
+      </div>
+      <div class="col"><strong>{{display.id_number}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Package :</strong></h6>
+      </div>
+      <div class="col"><strong>{{display.package}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Status :</strong></h6>
+      </div>
+      <div class="col"><strong>{{display.status}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Received by :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{display.recieved_by}}</strong>
+      </div>
+    </div>
+    <div class="row profile">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Date Issued :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{display.created|date:'Y-M-d H:i'}}</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Member table -->
+<div class="my-4">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">
+        Member ({{display.first_name}} {{display.last_name}})
+      </h5>
+      <p class="text-white">Membership no: {{display.id_number}}</p>
+    </center>
+  </div>
+  <div class="mt-4">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{display.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Second Name:</div>
+        <div class="col-sm">{{display.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID number:</div>
+        <div class="col-sm">{{display.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">House Number & Street:</div>
+        <div class="col-sm">{{display.address}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-1:</div>
+        <div class="col-sm">{{display.phone_number}}</div>
+      </div>
+      {% if member.phone_number_2 %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-2:</div>
+        <div class="col-sm">{{member.phone_number_2}}</div>
+      </div>
+      {% endif %}
+      <!--  -->
+      {% if member.email %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{member.email}}</div>
+      </div>
+      {% endif %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding"></div>
+        <div class="col-sm">
+          <a
+            class="btn btn-secondary"
+            href="/admin/accounts/member/{{display.id}}/change/"
+            >Edit</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %} {# endif #}
+<!-- Spouse -->
+{% for x in spouse_display %}
+<!-- MEMBERSHIP JUMBOTRON -->
+<div class="mt-1">
+  <div class="profile-container p-3 rounded shadow">
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Membership No :</strong></h6>
+      </div>
+      <div class="col"><strong>{{x.id_number}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Package :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.member.package}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Status :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.member.status}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Received by :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.member.recieved_by}}</strong>
+      </div>
+    </div>
+    <div class="row profile">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Date Issued :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.created|date:'Y-M-d H:i'}}</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spouse tabel -->
+{# if x.status == 'deceased' #}
+<div class="my-4">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">Spouse ({{x.first_name}} {{x.last_name}})</h5>
+      <p class="text-white">Membership no: {{x.id_number}}</p>
+    </center>
+  </div>
+  <div class="mt-4">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Burial Date:</div>
+        <div class="col-sm">{{x.burial_date|date:'Y-M-d H:i'}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{x.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Second Name:</div>
+        <div class="col-sm">{{x.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID number:</div>
+        <div class="col-sm">{{x.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">House Number & Street:</div>
+        <div class="col-sm">{{x.address}}</div>
+      </div>
+
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-1:</div>
+        <div class="col-sm">{{x.phone_number}}</div>
+      </div>
+      {% if x.phone_number_2 %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-2:</div>
+        <div class="col-sm">{{x.phone_number_2}}</div>
+      </div>
+      {% endif %}
+      <!--  -->
+      {% if x.email %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{x.email}}</div>
+      </div>
+      {% endif %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding"></div>
+        <div class="row p-3 rounded m-2 info-details-bg">
+          <div class="col-sm sm-padding"></div>
+          <div class="col-sm">
+            <a
+              class="btn btn-secondary"
+              href="/admin/accounts/spouse/{{x.id}}/change/"
+              >Edit</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- if statement end -->
+{# endif #}
+<!-- loop end -->
+{% endfor %}
+
+<!-- Family Member table -->
+{% for x in family_display %}
+<!-- Member jumbotron -->
+<div class="mt-1">
+  <div class="profile-container p-3 rounded shadow">
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Membership No :</strong></h6>
+      </div>
+      <div class="col"><strong>{{x.id_number}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Package :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.member.package}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Status :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.member.status}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Received by :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.member.recieved_by}}</strong>
+      </div>
+    </div>
+    <div class="row profile">
+      <div class="col">
+        <h6 class="profile-headings"><strong>Date Issued :</strong></h6>
+      </div>
+      <div class="col">
+        <strong>{{x.created|date:'Y-M-d H:i'}}</strong>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Member jumbotron end -->
+<div class="my-4">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">
+        Family Member ({{x.first_name}} {{x.last_name}})
+      </h5>
+      <p class="text-white">Membership no: {{x.id_number}}</p>
+    </center>
+  </div>
+  <div class="mt-4">
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Burial Date:</div>
+        <div class="col-sm">{{x.burial_date|date:'Y-M-d H:i'}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{x.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Second Name:</div>
+        <div class="col-sm">{{x.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID number:</div>
+        <div class="col-sm">{{x.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">House Number & Street:</div>
+        <div class="col-sm">{{x.address}}</div>
+      </div>
+
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-1:</div>
+        <div class="col-sm">{{x.phone_number}}</div>
+      </div>
+      {% if x.phone_number_2 %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact-2:</div>
+        <div class="col-sm">{{x.phone_number_2}}</div>
+      </div>
+      {% endif %}
+      <!--  -->
+      {% if x.email %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{x.email}}</div>
+      </div>
+      {% endif %}
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding"></div>
+        <div class="row p-3 rounded m-2 info-details-bg">
+          <div class="col-sm sm-padding"></div>
+          <div class="col-sm">
+            <a
+              class="btn btn-secondary"
+              href="/admin/accounts/spouse/{{x.id}}/change/"
+              >Edit</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- if statement end -->
+{# endif #}
+<!-- loop end -->
+{% endfor %}
+
+<!-- body end -->
+{% endblock %}

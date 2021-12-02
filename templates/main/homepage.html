@@ -1,0 +1,411 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block title %} {{request.user}} {% endblock %} 
+{% block content %}
+
+<style>
+  .btn-info{
+    background-color: #282277 !important;
+    color: white;
+    border: #282277;
+  
+
+  }
+</style>
+
+<!-- User Roles if statement -->
+{% if request.user.is_staff %}
+<!-- Admin Homepage -->
+                 <div class="row">
+                             <!-- burials start -->
+                            <div class="col-sm rounded shadow m-1 p-3">
+                                <h6 class="burial-header pt-2 pb-2 px-2 rounded shadow">Upcoming Burials</h6>
+                                <!-- member burials -->
+                                {% if burials.first_name %}
+                                <div class="row pt-4">
+                                    <div class="col bruials-font-color">{{burials.first_name}} {{burials.last_name}}</div>
+                                    <div class="col bruials-font-color bruial-hide">{{burials.burial_date|date:'Y-M-d H:i'}}</div>
+                                    <div class="col bruials-font-color bruial-hide">{{burials.package}}</div>
+                                    <div class="col bruials-font-color">{{burials.town}}</div>
+                                    <div class="col">
+                                        <a href="/burials/{{burials.user.identification.slug}}" class="btn btn-secondary">
+                                            View
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="divider mt-2"></div>
+                                {% endif %}
+                                <!-- member burials end -->
+
+                                <!-- spouse loop -->
+                                {% if spouse_burials.first_name %}
+                                <div class="row pt-4">
+                                    <div class="col bruials-font-color">{{spouse_burials.first_name}} {{spouse_burials.last_name}}</div>
+                                    <div class="col bruials-font-color bruial-hide">{{spouse_burials.burial_date|date:'Y-M-d H:i'}}</div>
+                                    <div class="col bruials-font-color bruial-hide">{{spouse_burials.membership_no.user.member.package}}</div>
+                                    <div class="col bruials-font-color">{{spouse_burials.town}}</div>
+                                    <div class="col">
+                                        <a href="/burials/{{spouse_burials.slug}}" class="btn btn-secondary">
+                                            View
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="divider mt-2"></div>
+                                {% endif %}
+                                <!-- spouse loop end -->
+
+                                 <!-- family burials -->
+                                 {% if family_burials.first_name %}
+                                <div class="row pt-4">
+                                    <div class="col bruials-font-color">{{family_burials.first_name}} {{family_burials.last_name}}</div>
+                                    <div class="col bruials-font-color bruial-hide">{{family_burials.burial_date|date:'Y-M-d H:i'}}</div>
+                                    <div class="col bruials-font-color bruial-hide">{{family_burials.membership_no.user.member.package}}</div>
+                                    <div class="col bruials-font-color">{{family_burials.town}}</div>
+                                    <div class="col">
+                                        <a href="/burials/{{family_burials.slug}}" class="btn btn-secondary">
+                                            View
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="divider mt-2"></div>
+                                {% endif %}
+                                <!-- family burials end -->
+                                 <a class="btn btn-info d-flex justify-content-center" href="{% url 'all-member-burials' %}">View all</a>
+                            </div>
+                            <!-- burials end -->
+
+                            <!-- counter start -->
+                            <div class="col-sm rounded  m-2 shadow mt-2 pb-5 pt-3 d-none d-lg-block">
+                                <div class="row px-5 mt-3">
+                                    <div class="col-sm m-0 p-0">
+                                        <div class="m-0 p-0">
+                                            <div class="circle">
+                                                <center class="mt-4">
+                                                    <div class="circle-fonts">
+                                                        {{members_no}}
+                                                    </div>
+                                                </center>
+                                            </div>
+                                            <p class="mt-3 circle-headings">Members</p>
+                                            <div class="underline-text m-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm m-0 p-0">
+                                        <div class="m-0 p-0">
+                                            <div class="circle">
+                                                <center class="mt-4">
+                                                    <div class="circle-fonts">
+                                                        <!-- {{membership_no.spouse_set.all|length}} -->
+                                                         {{spouse.count}}
+                                                    </div>
+                                                </center>
+                                            </div>
+                                            <p class="mt-3 circle-headings">Spouses</p>
+                                            <div class="underline-text m-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm m-0 p-0">
+                                        <div class="m-0 p-0">
+                                            <div class="circle">
+                                                <center class="mt-4">
+                                                    <div class="circle-fonts">
+                                                        {{family.count}}
+                                                    </div>
+                                                </center>
+                                            </div>
+                                            <p class="mt-3 circle-headings">Family</p>
+                                            <div class="underline-text m-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- counter end -->
+                        </div>
+
+
+<!-- Pagination -->
+  <div class="d-flex justify-content-center mt-4">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if pending_list.has_previous %}
+        <li class="page-item">
+          <a href="?page=1" class="page-link" style="color: blue !important"
+            >&laquo First</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            style="color: blue !important"
+            href="?page={{ pending_list.previous_page_number }}"
+            >Previous</a
+          >
+        </li>
+        {% endif %}
+        <!--  -->
+        <li class="page-item disabled">
+          <a href="#" class="page-link">
+            Page {{ pending_list.number }} of {{ pending_list.paginator.num_pages }}</a
+          >
+        </li>
+        <!--  -->
+        {% if pending_list.has_next %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            style="color: blue"
+            href="?page={{ pending_list.next_page_number }}"
+            >Next</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            style="color: blue"
+            href="?page={{  pending_list.paginator.num_pages }}"
+            >Last &raquo;</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+<!-- Pagination end -->
+
+
+<!-- Pending mebers table -->
+<div class="container mt-1 mb-2">
+  <div class="card-table shadow-lg rounded p-3 pb-5">
+    <div class="row mb-4 mt-2">
+      <div class="col-sm-3 table-member p-3 rounded shadow">
+        <div class="row">
+          <div class="col">ADD MEMBER</div>
+          <div class="col-6">
+            <a href="{% url 'logout' %}"
+              ><i class="fas fa-user-plus table-member-icon"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 class="headings pt-2">New Clients</h6>
+    <div class="row mt-4">
+      <div class="col table-color"><strong>Name</strong></div>
+      <!-- <div class="col table-color"><strong>Client</strong></div> -->
+      <div class="col table-color hide-component">
+        <strong>ID no.</strong>
+      </div>
+      <div class="col table-color hide-component">
+        <strong>Status</strong>
+      </div>
+      <div class="col table-color hide-component"><strong>Date</strong></div>
+      <div class="col table-color"></div>
+    </div>
+
+    {% for pending in pending_list %}
+    <div class="divider mt-1"></div>
+    <div class="row pt-3">
+      <div class="col">
+        {{pending.first_name}} {{pending.last_name}}
+        <p class="table-color table-email">{{pending.email}}</p>
+      </div>
+      <div class="col hide-component">{{pending.user.identification}}</div>
+      <div class="col hide-component">
+        <button type="button" class="btn btn-success">
+          {{pending.status}}
+        </button>
+      </div>
+      <div class="col hide-component">{{pending.created}}</div>
+      <div class="col">
+        <a href="{% url 'view_pending' pending.id %}">
+          <button type="button" class="btn client-button">View</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- Pending mebers table -->
+
+<!-- Pagination -->
+  <div class="d-flex justify-content-center mt-5">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if pending_list.has_previous %}
+        <li class="page-item">
+          <a href="?page=1" class="page-link" style="color: blue !important"
+            >&laquo First</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            style="color: blue !important"
+            href="?page={{ pending_list.previous_page_number }}"
+            >Previous</a
+          >
+        </li>
+        {% endif %}
+        <!--  -->
+        <li class="page-item disabled">
+          <a href="#" class="page-link">
+            Page {{ pending_list.number }} of {{ pending_list.paginator.num_pages }}</a
+          >
+        </li>
+        <!--  -->
+        {% if pending_list.has_next %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            style="color: blue"
+            href="?page={{ pending_list.next_page_number }}"
+            >Next</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            style="color: blue"
+            href="?page={{  pending_list.paginator.num_pages }}"
+            >Last &raquo;</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+<!-- Pagination end -->
+
+
+{% else %}
+<!-- Member Homepage -->
+<!-- sidebar -->
+    {% if member.user.identification %}
+  
+    <!-- MEMBER -->
+          <!-- Member counter -->
+          {# include 'members/counter.html' #}
+          <!-- Member counter end -->
+                <div class="spouse-card p-3 mt-1">
+                  <center>
+                    <h5 class="spouse-fonts">
+                      Member ({{member.first_name}} {{member.last_name}}) Spouse: {{member.user.identification.spouse.count}}  Family Members: {{member.user.identification.family.count}}
+                      
+                    </h5>
+                  </center>
+                </div>
+                <div class="member-info shadow-lg rounded p-3">
+                  <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Frist Name:</div>
+                    <div class="col-sm">{{member.user.first_name}}</div>
+                  </div>
+                  <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Second Name:</div>
+                    <div class="col-sm">{{member.user.last_name}}</div>
+                  </div>
+                  <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Membership number:</div>
+                    <div class="col-sm">{{member.user.identification}}</div>
+                  </div>
+                   <div class="row p-3 rounded m-2 info-details-bg">
+                    <div class="col-sm sm-padding">Package:</div>
+                    <div class="col-sm">{{member.package}}</div>
+                  </div>
+                  <div class="row p-3 rounded m-2 info-details-bg">
+                   <center>
+                      <!-- Button trigger modal -->
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      View
+                    </button>
+                   </center>
+                  </div>
+                </div>
+             
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+                
+               
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content rounded mt-5">
+                    <div class="modal-header christian-bg">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        <strong>{{member.first_name}} {{member.last_name}}</strong>
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body christian-bg">
+                      <div class="member-details">
+                        <p><strong>Package:</strong> {{member.package}}</p>
+                        <p><strong>ID no:</strong> {{member.user.identification}}</p>
+                        <p><strong>Email:</strong> {{member.email}}</p>
+                        <p><strong>Phone no:</strong> {{member.phone}}</p>
+                        <p><strong>Street:</strong> {{member.street}}</p>
+                        <p><strong>Town:</strong> {{member.town}}</p>
+                        <p><strong>City:</strong> {{member.city}}</p>
+                        <p><strong>Code:</strong> {{member.zip_code}}</p>
+                        <p>
+                          <strong>Date Created:</strong>
+                          {{member.created}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="modal-footer christian-primary-bg rounded"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- MODAL END -->
+
+
+    <!-- END HERRE -->
+    {% else %}  
+    <div>
+        <img
+        class="christian-funerals-logo"
+        src="{% static 'images/logo-removed.png' %}"
+        alt="Christian Mbonani Funerals Logo"
+      />
+      <!-- alert 1 -->
+      <div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>In taking the first steps to cover your family.We only exist to help you prepare for tough times.</p>
+  <hr>
+  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</div>
+      <!-- alert 2 -->
+          <div class="alert alert-primary d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+  <div>
+    To process your application create a Member Profile. <a style="text-decoration: underline;" href="{% url 'update-member' profile_id=request.user.id %}">CLICK HERE!</a>
+  </div>
+</div>
+    </div>
+
+    {% endif %}
+  
+</div>
+
+
+
+{% endif %} 
+
+<p>main/homepage.html</p>
+{% endblock %}

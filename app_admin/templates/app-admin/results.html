@@ -1,0 +1,72 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+<title>{{request.user}} - Dashboard</title>
+{% block content %}
+
+<style>
+  .alert-success {
+    background-color: #282277;
+    color: white;
+  }
+</style>
+
+<center>
+  {% if searched %}
+  <h5>You searched for {{searched}}</h5>
+  <br />
+  {% for member in members %}
+
+  <div class="alert alert-success d-flex align-items-center" role="alert">
+    <svg
+      class="bi flex-shrink-0 me-2"
+      width="24"
+      height="24"
+      role="img"
+      aria-label="Success:"
+    >
+      <use xlink:href="#check-circle-fill" />
+    </svg>
+    <div>
+      <a
+        style="text-decoration: underline"
+        href="{% url 'profile-details' member.id %}"
+        ><p>view member >> {{member.first_name}} {{member.last_name}}</p></a
+      >
+    </div>
+  </div>
+  <div class="my-4">
+    <div class="spouse-card p-3">
+      <center>
+        <h5 class="spouse-fonts">
+          Member ({{member.first_name}} {{member.last_name}})
+        </h5>
+      </center>
+    </div>
+    <div class="mt-4">
+      <div class="profile-info shadow-lg rounded p-3">
+        <div class="row p-3 rounded m-2 info-details-bg">
+          <div class="col-sm sm-padding">Frist Name:</div>
+          <div class="col-sm">{{member.first_name}}</div>
+        </div>
+        <div class="row p-3 rounded m-2 info-details-bg">
+          <div class="col-sm sm-padding">Second Name:</div>
+          <div class="col-sm">{{member.last_name}}</div>
+        </div>
+        <div class="row p-3 rounded m-2 info-details-bg">
+          <div class="col-sm sm-padding">ID number:</div>
+          <div class="col-sm">{{member.id_number}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!--  -->
+  {% else %}
+  <h3>Nothing in search!</h3>
+  {% endif %}
+</center>
+
+{% endblock %}

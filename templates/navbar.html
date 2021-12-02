@@ -1,0 +1,62 @@
+{% load static %}
+
+<section class="w3l-bootstrap-header">
+  <nav class="navbar navbar-expand-lg navbar-light py-lg-2 py-2">
+    <div class="container">
+      <!-- <a class="navbar-brand" href="index.html"><span class="fa fa-gg"></span> Corporite</a> -->
+      <a class="navbar-brand" href="#index.html">
+        <img
+          src="{% static 'images/logo-removed.png' %}"
+          alt="Your logo"
+          title="Your logo"
+          style="height: 100px"
+        />
+      </a>
+      <button
+        class="navbar-toggler button-color"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon fa fa-bars"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'services' %}">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'gallery' %}">Gallary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'branch' %}">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <!-- Admin -->
+          {% if request.user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Admin</a>
+          </li>
+          {% else %}
+          <!-- Member -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Profile</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>

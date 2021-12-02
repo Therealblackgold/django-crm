@@ -1,0 +1,57 @@
+{% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- Title -->
+{% block title %} {{request.user}} Payments Details {% endblock %}
+<!-- BODY -->
+{% block content %}
+<div class="row add-button-row mb-3">
+  <div class="col-sm-10 mx-auto shadow py-4">
+    <form action="">{{form.as_p}}</form>
+    <div class="button btn btn-info">Add</div>
+  </div>
+</div>
+<div class="row">
+  <!-- burials start -->
+  <div class="col-sm rounded shadow m-1 p-3">
+    <h6 class="burial-header pt-2 pb-2 px-2 rounded shadow">
+      Membership Payments - {{member.paid.count}}
+    </h6>
+    <!-- Member -->
+    {% for x in member.paid.all %}
+    <!-- payment if statemnt -->
+    <!-- if -->
+    <div class="row pt-4">
+      <div class="col bruials-font-color">{{x.amount}} - {{x.month}}</div>
+      <div class="col bruials-font-color bruial-hide">
+        {{x.date|date:'Y-M-d H:i'}}
+      </div>
+      <div class="col bruials-font-color bruial-hide">{{x.member}}</div>
+      <div class="col bruials-font-color">
+        <i class="fas fa-file-alt sidebar-icon"></i>
+      </div>
+      {% if x.proof_of_payment %}
+      <div class="col">
+        <a
+          href="{{x.proof_of_payment.url}}"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          View
+        </a>
+      </div>
+      {% else %}
+      <div class="col">
+        <div class="bruials-font-color col">no-proof-of-payment</div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="divider mt-2"></div>
+
+    <!-- if statement end -->
+    {% endfor %}
+    <!-- MEMBER DOCUMENTS END -->
+  </div>
+</div>
+<!-- body end -->
+{% endblock %}

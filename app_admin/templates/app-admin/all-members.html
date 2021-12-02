@@ -1,0 +1,188 @@
+{# extends 'christian_admin/main.html' #} {% extends 'main/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block content %}
+<!-- SIDEKICKS TEMPLATE -->
+
+<!-- SEARCH -->
+<div
+  class="card mb-2 mt-1 d-none d-md-block"
+  style="background-color: var(--secondart-color); color: whitesmoke"
+>
+  <div class="card-body my-5">
+    <!-- FORM -->
+    <form class="row g-3" action="" method="get" class="d-flex">
+      <div class="col-auto">
+        {% csrf_token %}
+
+        <label for="exampleDataList" class="form-label">First Name</label>
+        {{myFilter.form.firstname_search}}
+      </div>
+      <div class="col-auto">
+        {% csrf_token %}
+
+        <label for="exampleDataList" class="form-label">Last Name</label>
+        {{myFilter.form.lastname_search}}
+      </div>
+      <div class="dropdown col-auto">
+        <label for="exampleDataList" class="form-label">STATUS</label>
+        {{myFilter.form.status}}
+      </div>
+      <div class="col-auto">
+        <button
+          type="submit"
+          class="btn shadow"
+          style="background-color: var(--primary-color); color: white"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col">
+  <div class="pb-4">
+    <h6 class="Member-heading">All Christian Funerals Members</h6>
+  </div>
+  <div class="d-none d-md-block">
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr class="bg-color-members">
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">ID no.</th>
+          <th scope="col">Package</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Original loop -->
+        {# for x in data #}
+
+        <!-- Pagination loop -->
+        {% for x in members %}
+        <tr>
+          <td>{{x.first_name}}</td>
+          <td>{{x.last_name}}</td>
+          <td>{{x.id_number}}</td>
+          <td>{{x.package}}</td>
+          <td>{{x.status}}</td>
+          <td>
+            <a
+              class="btn btn-secondary"
+              href="{% url 'update-member-admin' slug_id=x.slug %}"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              class="btn cmf-btn-sencondary"
+              style="
+                background-color: var(--secondart-color);
+                color: whitesmoke;
+              "
+              href="{% url 'profile-details' profile_id=x.id %}"
+              >View</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Small screens -->
+  <style>
+    .btn-info {
+      background-color: #282277 !important;
+      color: white;
+    }
+  </style>
+  <div class="row d-md-none">
+    {% for x in members %}
+    <div class="col-sm-6 my-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">Name: {{x.first_name}} {{x.last_name}}</h5>
+          <hr />
+          <p class="card-text">ID no: {{x.id_number}}</p>
+          <p class="card-text">Package: {{x.package}}</p>
+          <p class="card-text">Status: {{x.status}}</p>
+          <a
+            href="{% url 'update-member-admin' slug_id=x.slug %}"
+            class="btn btn-secondary"
+            >Edit</a
+          >
+          <a
+            href="{% url 'profile-details' profile_id=x.id %}"
+            class="btn btn-info"
+            >View</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!--  -->
+
+  <!-- {{members}}
+  <hr />
+  has Prev: {{ members.has_previous }}
+  <br />
+  has Next: {{ members.has_next }}
+  <br />
+  has Current Page: {{ members.number }}
+  <br />
+  Number of: {{ members.paginator.num_pages }}
+  <br /><br /> -->
+
+  <div class="d-flex justify-content-center mt-5">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if members.has_previous %}
+        <li class="page-item">
+          <a href="?page=1" class="page-link pagination-color">&laquo First</a>
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link pagination-color"
+            href="?page={{ members.previous_page_number }}"
+            >Previous</a
+          >
+        </li>
+        {% endif %}
+        <!--  -->
+        <li class="page-item">
+          <a href="#" class="page-link pagination-color">
+            Page {{ members.number }} of {{ members.paginator.num_pages }}</a
+          >
+        </li>
+        <!--  -->
+        {% if members.has_next %}
+        <li class="page-item">
+          <a
+            class="page-link pagination-color"
+            href="?page={{ members.next_page_number }}"
+            >Next</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link pagination-color"
+            href="?page={{  members.paginator.num_pages }}"
+            >Last &raquo;</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- TEMPLATE END -->
+
+<!-- Body end -->
+{% endblock %}
